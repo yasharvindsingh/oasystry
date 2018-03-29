@@ -1,12 +1,16 @@
 import os
 import subprocess
+import sys
 
-#subprocess.call('git init',shell = True)
-#print('init done..')
+init_dir = sys.argv[2]+'/.git'
+startup_repo = sys.argv[3]
 
-subprocess.call('git add .',shell=True)
-#print('adding dne')
-subprocess.call('git commit -m "committed"',shell=True)
-#subprocess.call('git remote add origin https://github.com/yasharvindsingh/oasystry1.git',shell=True)
-subprocess.call('git push --set-upstream origin master',shell=True)
-#print("2")
+if not os.path.isdir(init_dir):
+    subprocess.call('git init',shell = True)
+    subprocess.call('git add .',shell=True)
+    subprocess.call('git commit -m "committed"',shell=True)
+    subprocess.call('git remote add origin https://github.com/OASYS-SIH-2018/'+str(startup_repo),shell=True)
+    subprocess.call('git push --set-upstream origin master',shell=True)
+else:
+    subprocess.call('git remote add origin https://github.com/OASYS-SIH-2018/'+str(startup_repo),shell=True)
+    subprocess.call('git push --set-upstream origin master',shell=True)
